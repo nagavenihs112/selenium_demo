@@ -3,14 +3,17 @@ name: Selenium Java Tests & Docker Publish
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
 
   pull_request:
-    branches: ["main"]
+    branches:
+      - main
 
 jobs:
 
   selenium-test:
+    name: Run Selenium Tests
     runs-on: ubuntu-latest
 
     steps:
@@ -32,13 +35,15 @@ jobs:
           java -version
           google-chrome --version
 
-      - name: Run Selenium tests
+      - name: Run Selenium TestNG tests
         run: mvn clean test -Dheadless=true
 
   build-and-publish-docker:
+    name: Build and Push Docker Image
     needs: selenium-test
     runs-on: ubuntu-latest
-    if: github.event_name == 'push'
+
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 
     steps:
       - name: Checkout source code
@@ -54,7 +59,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Build and Push Docker Image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           file: ./Dockerfile
