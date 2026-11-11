@@ -4,6 +4,7 @@ name: Selenium Java Tests & Docker Publish
 on:
   push:
     branches: ["main"]
+
   pull_request:
     branches: ["main"]
 
