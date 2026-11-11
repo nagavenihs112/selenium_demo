@@ -1,0 +1,51 @@
+
+# Maven build files
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+release.properties
+
+# Java compiled files
+*.class
+*.jar
+*.war
+*.ear
+
+# Eclipse IDE files
+.classpath
+.project
+.settings/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# VS Code
+.vscode/
+
+# Test reports
+surefire-reports/
+test-output/
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Selenium browser profiles
+chrome-profile/
+chromedriver.log
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
